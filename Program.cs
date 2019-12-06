@@ -10,19 +10,17 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
-           
+
             NewCustomList<int> list = new NewCustomList<int>();
-           
-                list.Add(2);
-                list.Add(5);
-                list.Add(3);
-                  
-                     
-               Console.Write(list+ " ");
-            Console.ReadLine();
 
+            list.Add(2);
+            list.Add(5);
+            list.Add(3);
 
-          
+            foreach (int x in list)
+            {
+                Console.WriteLine(x);
+            }
         }
     }
 }
