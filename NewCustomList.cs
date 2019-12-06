@@ -74,6 +74,17 @@ namespace CustomList
         {
             return this.GetEnumerator();
         }
+        public void Remove(T value)
+        {
+            for(int i=0;i<count;i++)
+            {
+                if(data[i].Equals(value))
+                {
+                    data[i] = data[i + 1];
+                    count++;
+                }
+            }
+        }
     }
 }
 

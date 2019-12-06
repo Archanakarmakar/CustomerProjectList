@@ -95,6 +95,21 @@ namespace UnitTestProject1
 
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Remove_TestInt()
+        {
+            NewCustomList<int> newlist = new NewCustomList<int>();
+            newlist.Add(5);
+            newlist.Add(3);
+            newlist.Add(22);
+            newlist.Add(50);
+            newlist.Add(2);
+            newlist.Add(100);
+            newlist.Remove(3);
+            int expected = 3;
+            int actual = newlist[1];
+            Assert.AreEqual(expected, actual);
+        }
 
     }
     }
