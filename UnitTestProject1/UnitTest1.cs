@@ -57,13 +57,37 @@ namespace UnitTestProject1
         {
             NewCustomList<string> newlist = new NewCustomList<string>();
             newlist.Add("hello");
-            string bar = "foo";
+            newlist.Add("get");
+            newlist.Add("A");
+            newlist.Add("new");
+            newlist.Add("life");
+
+            string expected = "hello";
             //Act
-            newlist[0] = bar;
+            string actual = newlist[0];
 
             //Assert
-            Assert.AreEqual("foo", bar);
+            Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Add_SetStringAtEndIndex()
+        {
+            NewCustomList<string> newlist = new NewCustomList<string>();
+            newlist.Add("hello");
+            newlist.Add("get");
+            newlist.Add("A");
+            newlist.Add("new");
+            newlist.Add("job");
+
+            string expected = "job";
+            //Act
+            string actual = newlist[4];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
         [TestMethod]
         public void Add_IndexCpacity()
         {
@@ -96,22 +120,65 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        public void Indexer_ElementOutOfRange()
+        {
+            NewCustomList<int> newlist = new NewCustomList<int>();
+
+            newlist.Add(1);
+            newlist.Add(2);
+            newlist.Add(3);
+            newlist.Add(5);
+            newlist.Add(6);
+
+            //newlist[10];
+            //  Assert.AreEqual();
+
+        }
+        [TestMethod]
         public void Remove_TestInt()
         {
             NewCustomList<int> newlist = new NewCustomList<int>();
-            newlist.Add(5);
-            newlist.Add(3);
-            newlist.Add(22);
-            newlist.Add(50);
+            newlist.Add(1);
             newlist.Add(2);
-            newlist.Add(100);
+            newlist.Add(3);
+            newlist.Add(4);
+            newlist.Add(5);
+
             newlist.Remove(3);
-            int expected = 3;
-            int actual = newlist[1];
+            Assert.AreEqual(4, newlist[2]);
+
+
+        }
+        [TestMethod]
+        public void Remove_TestEndOfString()
+        {
+            NewCustomList<string> newlist = new NewCustomList<string>();
+            newlist.Add("Hi");
+            newlist.Add("Hello");
+            newlist.Add("Baby");
+            newlist.Add("Hey");
+            newlist.Add("Son");
+
+            newlist.Remove("Son");
+            Assert.AreEqual("Son", newlist.LastElementRemoved);
+        }
+
+        [TestMethod]
+        public void String_Add_ToString()
+        {
+            NewCustomList<string> newlist = new NewCustomList<string>();
+            newlist.Add("Hello");
+            newlist.Add("World");
+            newlist.Add("To");
+            newlist.Add("Go");
+            newlist.Add("Cart");
+
+            string actual = newlist.StringToString();
+            string expected = "HelloWorldToGoCart";
             Assert.AreEqual(expected, actual);
         }
 
     }
-    }
+}
 
 

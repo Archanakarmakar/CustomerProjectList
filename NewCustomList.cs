@@ -12,6 +12,7 @@ namespace CustomList
         T[] data;
         int count;
         int capacity;
+        T lastElementRemoved;
         int MaxIndex;
         T[] temporaryArray;
         public NewCustomList()
@@ -25,7 +26,15 @@ namespace CustomList
         {
             get
             {
-                return data[number];
+                if(number < count)
+                {
+                    return data[number];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+             
             }
             set
             {
@@ -41,6 +50,14 @@ namespace CustomList
         public int Capacity
         {
             get { return capacity; }
+        }
+
+        public T LastElementRemoved
+        {
+            get
+            {
+                return lastElementRemoved;
+            }
         }
         public void Add(T value)
         {
@@ -76,14 +93,33 @@ namespace CustomList
         }
         public void Remove(T value)
         {
+          // int j = 0;
             for(int i=0;i<count;i++)
             {
                 if(data[i].Equals(value))
                 {
                     data[i] = data[i + 1];
                     count++;
+                    lastElementRemoved = value;
+                }
+                else
+                {
+                 //   temporaryArray[i] = data[i];
+                    i--;
+
                 }
             }
+        }
+        public  string StringToString()
+        {
+           string NewString = "";
+            for(int i=0;i<count;i++)
+            {
+                NewString = NewString + data[i] + "";
+
+            }
+            return NewString;
+
         }
     }
 }
