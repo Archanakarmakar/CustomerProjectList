@@ -26,7 +26,7 @@ namespace CustomList
         {
             get
             {
-                if(number < count)
+                if (number < count)
                 {
                     return data[number];
                 }
@@ -34,7 +34,7 @@ namespace CustomList
                 {
                     throw new ArgumentOutOfRangeException();
                 }
-             
+
             }
             set
             {
@@ -93,27 +93,22 @@ namespace CustomList
         }
         public void Remove(T value)
         {
-          // int j = 0;
-            for(int i=0;i<count;i++)
+            // int j = 0;
+            int countHolder = count;
+            for (int i = 0; i < countHolder; i++)
             {
-                if(data[i].Equals(value))
+                if (data[i].Equals(value))
                 {
                     data[i] = data[i + 1];
-                    count++;
+                    count--;
                     lastElementRemoved = value;
-                }
-                else
-                {
-                 //   temporaryArray[i] = data[i];
-                    i--;
-
                 }
             }
         }
-        public  string StringToString()
+        public string StringToString()
         {
-           string NewString = "";
-            for(int i=0;i<count;i++)
+            string NewString = "";
+            for (int i = 0; i < count; i++)
             {
                 NewString = NewString + data[i] + "";
 
@@ -123,4 +118,26 @@ namespace CustomList
         }
     }
 }
-
+        /*  public void Sort()
+          {
+              for (int i = 0; i <data.count; i++)
+              {
+                  for (int j = 0; j < data.count; j++)
+                  {
+                      try
+                      {
+                       int  first  = Convert.ToInt32(data[j]);
+                        int second = Convert.ToInt32(myArray[j + 1]);
+                          if (first.CompareTo(second) > 0)
+                          {
+                              T firstElement = data[j];
+                              T secondElement =data[j + 1];
+                              data[j] = secondElement;
+                              myArray[j + 1] = firstElement;
+                          }
+                      }
+                      catch
+                      { }
+                  }
+              }
+          }*/

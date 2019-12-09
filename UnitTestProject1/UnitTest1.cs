@@ -157,10 +157,10 @@ namespace UnitTestProject1
             newlist.Add("Hello");
             newlist.Add("Baby");
             newlist.Add("Hey");
-            newlist.Add("Son");
+            newlist.Add("Say");
 
-            newlist.Remove("Son");
-            Assert.AreEqual("Son", newlist.LastElementRemoved);
+            newlist.Remove("Say");
+            Assert.AreEqual("Say", newlist.LastElementRemoved);
         }
 
         [TestMethod]
