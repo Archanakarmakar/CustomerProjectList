@@ -12,8 +12,8 @@ namespace CustomList
         T[] data;
         int count;
         int capacity;
+        int Maxindex;
         T lastElementRemoved;
-        int MaxIndex;
         T[] temporaryArray;
         public NewCustomList()
         {
@@ -61,7 +61,7 @@ namespace CustomList
         }
         public void Add(T value)
         {
-            if (count == MaxIndex)
+            if (count == capacity)
             {
                 CreateLargerArray();
             }
@@ -93,19 +93,23 @@ namespace CustomList
         }
         public void Remove(T value)
         {
-            // int j = 0;
+            int j = 0;
             int countHolder = count;
             for (int i = 0; i < countHolder; i++)
             {
                 if (data[i].Equals(value))
                 {
-                    data[i] = data[i + 1];
                     count--;
                     lastElementRemoved = value;
                 }
+                else
+                {
+                    data[j] = data[i];
+                    j++;
+                }
             }
         }
-        public string StringToString()
+        public override string ToString()
         {
             string NewString = "";
             for (int i = 0; i < count; i++)
@@ -116,28 +120,66 @@ namespace CustomList
             return NewString;
 
         }
+        public static NewCustomList<T> operator +(NewCustomList<T> list1, NewCustomList<T> list2)
+        {
+          NewCustomList<T> newlist = new NewCustomList<T>();
+            foreach (T item in list1)
+            {
+                newlist.Add(item);
+            }
+            foreach (T item in list2)
+            {
+                newlist.Add(item);
+            }
+            return newlist;
+        }
+        public static NewCustomList<T> operator -(NewCustomList<T> list1, NewCustomList<T> list2)
+        {
+            NewCustomList<T> newlist = new NewCustomList<T>();
+            foreach (T item in list1)
+            {
+                newlist.Remove(item);
+            }
+            foreach (T item in list2)
+            {
+                newlist.Remove(item);
+            }
+            return newlist;
+            
+        }
+
     }
 }
-        /*  public void Sort()
-          {
-              for (int i = 0; i <data.count; i++)
-              {
-                  for (int j = 0; j < data.count; j++)
-                  {
-                      try
-                      {
-                       int  first  = Convert.ToInt32(data[j]);
-                        int second = Convert.ToInt32(myArray[j + 1]);
-                          if (first.CompareTo(second) > 0)
-                          {
-                              T firstElement = data[j];
-                              T secondElement =data[j + 1];
-                              data[j] = secondElement;
-                              myArray[j + 1] = firstElement;
-                          }
-                      }
-                      catch
-                      { }
-                  }
-              }
-          }*/
+            
+
+        //overloading + operator
+        //overloading - operator
+        //method zip
+        //txt documantation for - operator
+        //iterable
+        //
+
+        /*   public void Sort()
+           {
+               //int temp;
+               //int n = count;
+
+
+               for (int i = 0; i < count; i++)
+               {
+                   for (int j = 0; j < count; j++)
+                   {
+                       int first = Convert.ToInt32(data[j]);
+                       int second = Convert.ToInt32(data[j + 1]);
+                       if (first.CompareTo(second) > 0)
+                       {
+                           T firstElement = data[j];
+                           T secondElement = data[j + 1];
+                           data[j] = secondElement;
+                           data[j + 1] = firstElement;
+                       }
+                   }
+               }
+           }*/
+
+

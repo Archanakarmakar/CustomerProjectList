@@ -152,33 +152,122 @@ namespace UnitTestProject1
         [TestMethod]
         public void Remove_TestEndOfString()
         {
+            //Arrange
             NewCustomList<string> newlist = new NewCustomList<string>();
             newlist.Add("Hi");
             newlist.Add("Hello");
             newlist.Add("Baby");
             newlist.Add("Hey");
-            newlist.Add("Say");
-
-            newlist.Remove("Say");
-            Assert.AreEqual("Say", newlist.LastElementRemoved);
+            newlist.Add("Son");
+            //Act
+            newlist.Remove("Son");
+            //Assert
+            Assert.AreEqual("Son", newlist.LastElementRemoved);
         }
-
+        [TestMethod]
+        public void Convert_DataTypes_ToString()
+        {
+            //Arrange
+            NewCustomList<int> newlist = new NewCustomList<int>();
+            newlist.Add(34);
+            //Act
+            string result = newlist.ToString();
+            //Assert
+            Assert.AreEqual(result, "34");
+        }
         [TestMethod]
         public void String_Add_ToString()
         {
+            //Arrange
             NewCustomList<string> newlist = new NewCustomList<string>();
             newlist.Add("Hello");
             newlist.Add("World");
             newlist.Add("To");
             newlist.Add("Go");
             newlist.Add("Cart");
-
-            string actual = newlist.StringToString();
+            //Act
+            string actual = newlist.ToString();
             string expected = "HelloWorldToGoCart";
+            //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Test_Overloading_PlusOperator()
+        {
+            //Arrange
+            NewCustomList<int> newlist = new NewCustomList<int>();
+            NewCustomList<int> actualResult = new NewCustomList<int>() { 1, 2, 3, 4 };
+            newlist.Add(1);
+            newlist.Add(2);
+            NewCustomList<int> secondList = new NewCustomList<int>();
+            secondList.Add(3);
+            secondList.Add(4);
+            bool compare = true;
+            for (int i = 0; i < newlist.Count; i++)
+            {
+                if (newlist.Capacity != actualResult.Capacity)
 
+                    compare = false;
+
+            }
+            //Act
+            NewCustomList<int> result = new NewCustomList<int>();
+            result = (newlist + secondList);
+            //Assert
+            Assert.IsTrue(compare);
+        }
+
+        [TestMethod]
+        public void Test_Overloading_SubstactionOperator()
+        {
+            //Arrange
+            NewCustomList<int> list = new NewCustomList<int>(){ 1,2,3 };
+            NewCustomList<int> secondList = new NewCustomList<int> () { 4,2,5 };
+            NewCustomList<int> actualResult = new NewCustomList<int> () {1,3};
+            NewCustomList<int> combinedList = (list + secondList);
+            bool compare = true;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list.Capacity!= actualResult.Capacity)
+                {
+                    compare = false;
+                }
+            }
+            //Act
+            NewCustomList<int> result = (combinedList - secondList);
+            //Assert
+            Assert.IsTrue(compare);
+        }
     }
 }
+
+/* [TestMethod]
+ public void Sort_StringList_OrderedList()
+ {
+     //Arrange
+     NewCustomList<string> newlist = new NewCustomList<string>();
+     newlist.Add("foo");
+     newlist.Add("bar");
+     newlist.Add("hello");
+     //Act
+     newlist.Sort();
+     //Assert
+     Assert.AreEqual("bar", newlist[0]);
+ }*/
+/* [TestMethod]
+ public void Sort_IntList_ListCount3()
+ {
+     //Arrange
+     NewCustomList<string> newlist = new NewCustomList<string>();
+     newlist.Add(12);
+     newlist.Add(23);
+     newlist.Add(11);
+     //Act
+     newlist.Sort();
+     //Assert
+     Assert.AreEqual(3, newlist.Count);
+ }*/
+
+
 
 
