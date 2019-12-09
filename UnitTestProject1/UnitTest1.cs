@@ -11,8 +11,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1Add_List()
         {
+            //Arrange
             NewCustomList<int> newlist = new NewCustomList<int>();
-            int expectedResult = 22;
+
             newlist.Add(5);
             newlist.Add(3);
             newlist.Add(5);
@@ -20,13 +21,15 @@ namespace UnitTestProject1
             newlist.Add(50);
             newlist.Add(2);
             newlist.Add(100);
-
+            //Act
+            int expectedResult = 22;
             //assert
             Assert.AreEqual(expectedResult, newlist[3]);
         }
         [TestMethod]
         public void Add_String()
         {
+            //Arrange
             NewCustomList<string> newlist = new NewCustomList<string>();
             string expectedResult = "Test";
 
@@ -39,6 +42,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Add_Double()
         {
+            //Arrange
             NewCustomList<double> newlist = new NewCustomList<double>();
             double expectedResult = 19.55;
             //act
@@ -55,6 +59,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Add_SetStringAtIndex0()
         {
+            //Arrange
             NewCustomList<string> newlist = new NewCustomList<string>();
             newlist.Add("hello");
             newlist.Add("get");
@@ -72,6 +77,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Add_SetStringAtEndIndex()
         {
+            //Arrange
             NewCustomList<string> newlist = new NewCustomList<string>();
             newlist.Add("hello");
             newlist.Add("get");
@@ -91,6 +97,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void Add_IndexCpacity()
         {
+            //Arrange
             NewCustomList<int> newlist = new NewCustomList<int>();
             newlist.Add(5);
             newlist.Add(3);
@@ -100,13 +107,15 @@ namespace UnitTestProject1
             newlist.Add(2);
             newlist.Add(100);
             int expected = 10;
+            //Act
             int actual = newlist.Capacity;
-
+            //Assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void Add_IndexCount()
         {
+            //Arrange
             NewCustomList<int> newlist = new NewCustomList<int>();
             newlist.Add(5);
             newlist.Add(3);
@@ -115,13 +124,15 @@ namespace UnitTestProject1
             newlist.Add(2);
             newlist.Add(100);
             int expected = 6;
+            //Act
             int actual = newlist.Count;
-
+            //Assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void Indexer_ElementOutOfRange()
         {
+            //Arrange
             NewCustomList<int> newlist = new NewCustomList<int>();
 
             newlist.Add(1);
@@ -131,20 +142,23 @@ namespace UnitTestProject1
             newlist.Add(6);
 
             //newlist[10];
+            //Assert
             //  Assert.AreEqual();
 
         }
         [TestMethod]
-        public void Remove_TestInt()
+        public void Remove_TestFirstInt()
         {
+            //Arrange
             NewCustomList<int> newlist = new NewCustomList<int>();
             newlist.Add(1);
             newlist.Add(2);
             newlist.Add(3);
             newlist.Add(4);
             newlist.Add(5);
-
+            //Act
             newlist.Remove(3);
+            //Assert
             Assert.AreEqual(4, newlist[2]);
 
 
@@ -195,48 +209,31 @@ namespace UnitTestProject1
         public void Test_Overloading_PlusOperator()
         {
             //Arrange
-            NewCustomList<int> newlist = new NewCustomList<int>();
-            NewCustomList<int> actualResult = new NewCustomList<int>() { 1, 2, 3, 4 };
-            newlist.Add(1);
-            newlist.Add(2);
-            NewCustomList<int> secondList = new NewCustomList<int>();
-            secondList.Add(3);
-            secondList.Add(4);
-            bool compare = true;
-            for (int i = 0; i < newlist.Count; i++)
-            {
-                if (newlist.Capacity != actualResult.Capacity)
-
-                    compare = false;
-
-            }
+            NewCustomList<int> newlist = new NewCustomList<int>() { 1,2 };
+             
+            NewCustomList<int> secondList = new NewCustomList<int>() {3,4};
+            NewCustomList<int> expectdResult = new NewCustomList<int>() { 1, 2, 3, 4 };
             //Act
-            NewCustomList<int> result = new NewCustomList<int>();
-            result = (newlist + secondList);
+            NewCustomList<int> actualresult = (newlist + secondList);
+            
             //Assert
-            Assert.IsTrue(compare);
+            Assert.AreEqual(expectdResult.ToString(),actualresult.ToString());
         }
 
         [TestMethod]
         public void Test_Overloading_SubstactionOperator()
         {
             //Arrange
-            NewCustomList<int> list = new NewCustomList<int>(){ 1,2,3 };
-            NewCustomList<int> secondList = new NewCustomList<int> () { 4,2,5 };
-            NewCustomList<int> actualResult = new NewCustomList<int> () {1,3};
-            NewCustomList<int> combinedList = (list + secondList);
-            bool compare = true;
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list.Capacity!= actualResult.Capacity)
-                {
-                    compare = false;
-                }
-            }
+            NewCustomList<int> list = new NewCustomList<int>() { 1, 3, 5 };
+            NewCustomList<int> secondList = new NewCustomList<int>() { 2, 1, 6, 7, 8 };
+            NewCustomList<int> expectedResult = new NewCustomList<int>() {3,5};
+
             //Act
-            NewCustomList<int> result = (combinedList - secondList);
+            NewCustomList<int> actualresult = (list - secondList);
             //Assert
-            Assert.IsTrue(compare);
+            Assert.AreEqual(expectedResult.ToString(),actualresult.ToString());
+
+
         }
     }
 }

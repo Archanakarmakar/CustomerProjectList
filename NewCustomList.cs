@@ -114,7 +114,7 @@ namespace CustomList
             string NewString = "";
             for (int i = 0; i < count; i++)
             {
-                NewString = NewString + data[i] + "";
+                NewString += data[i] + "";
 
             }
             return NewString;
@@ -138,7 +138,7 @@ namespace CustomList
             NewCustomList<T> newlist = new NewCustomList<T>();
             foreach (T item in list1)
             {
-                newlist.Remove(item);
+                newlist.Add(item);
             }
             foreach (T item in list2)
             {
@@ -146,6 +146,20 @@ namespace CustomList
             }
             return newlist;
             
+        }
+        public static NewCustomList<T> Zip(NewCustomList<T>list1, NewCustomList<T>list2)
+        {
+            NewCustomList<T> newlist = new NewCustomList<T>();
+            foreach (T item in list1)
+            {
+                newlist.Add(item);
+            }
+
+            foreach (T item in list1)
+            {
+                newlist.Add(item);
+            }
+            return newlist; 
         }
 
     }
