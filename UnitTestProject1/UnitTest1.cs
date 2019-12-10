@@ -235,6 +235,20 @@ namespace UnitTestProject1
 
 
         }
+        [TestMethod]
+        public void Test_OfTwoCustomListZIP()
+        {
+            //Arrange
+            NewCustomList<int> oddlist = new NewCustomList<int>() { 1, 3, 5 };
+            NewCustomList<int> evenlist = new NewCustomList<int>() { 2, 4, 6 };
+            
+            //Act
+            NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6 };                // Act
+            NewCustomList<int> actual = NewCustomList<int>.Zip(oddlist, evenlist);
+          
+            //Assert
+            Assert.AreEqual(expectedresult.ToString(), actual.ToString());
+        }
     }
 }
 

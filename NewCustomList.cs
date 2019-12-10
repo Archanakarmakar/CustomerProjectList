@@ -122,7 +122,7 @@ namespace CustomList
         }
         public static NewCustomList<T> operator +(NewCustomList<T> list1, NewCustomList<T> list2)
         {
-          NewCustomList<T> newlist = new NewCustomList<T>();
+            NewCustomList<T> newlist = new NewCustomList<T>();
             foreach (T item in list1)
             {
                 newlist.Add(item);
@@ -145,55 +145,54 @@ namespace CustomList
                 newlist.Remove(item);
             }
             return newlist;
-            
+
         }
-        public static NewCustomList<T> Zip(NewCustomList<T>list1, NewCustomList<T>list2)
+        public static NewCustomList<T> Zip(NewCustomList<T> list1, NewCustomList<T> list2)
         {
             NewCustomList<T> newlist = new NewCustomList<T>();
-            foreach (T item in list1)
-            {
-                newlist.Add(item);
-            }
 
-            foreach (T item in list1)
+            int Count = list1.Count < list2.Count ? list1.Count : list2.Count;
+
+            for (int i = 0; i < Count; i++)
             {
-                newlist.Add(item);
+                newlist.Add(list1[i]);
+                newlist.Add(list2[i]);
             }
-            return newlist; 
+            return newlist;
         }
 
     }
 }
-            
 
-        //overloading + operator
-        //overloading - operator
-        //method zip
-        //txt documantation for - operator
-        //iterable
-        //
 
-        /*   public void Sort()
+//overloading + operator
+//overloading - operator
+//method zip
+//txt documantation for - operator
+//iterable
+//
+
+/*   public void Sort()
+   {
+       //int temp;
+       //int n = count;
+
+
+       for (int i = 0; i < count; i++)
+       {
+           for (int j = 0; j < count; j++)
            {
-               //int temp;
-               //int n = count;
-
-
-               for (int i = 0; i < count; i++)
+               int first = Convert.ToInt32(data[j]);
+               int second = Convert.ToInt32(data[j + 1]);
+               if (first.CompareTo(second) > 0)
                {
-                   for (int j = 0; j < count; j++)
-                   {
-                       int first = Convert.ToInt32(data[j]);
-                       int second = Convert.ToInt32(data[j + 1]);
-                       if (first.CompareTo(second) > 0)
-                       {
-                           T firstElement = data[j];
-                           T secondElement = data[j + 1];
-                           data[j] = secondElement;
-                           data[j + 1] = firstElement;
-                       }
-                   }
+                   T firstElement = data[j];
+                   T secondElement = data[j + 1];
+                   data[j] = secondElement;
+                   data[j + 1] = firstElement;
                }
-           }*/
+           }
+       }
+   }*/
 
 
