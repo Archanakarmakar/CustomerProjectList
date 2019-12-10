@@ -75,6 +75,20 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        public void AddTestLargeNumber()
+        {
+            //arrange
+            //arrange
+            NewCustomList<int> newlist = new NewCustomList<int>();
+            //act
+            newlist.Add(2147483647);
+            int expectedResult = 2147483647;
+            int actual = newlist[0];
+            //assert
+
+            Assert.AreEqual(expectedResult, actual);
+        }
+        [TestMethod]
         public void Add_SetStringAtEndIndex()
         {
             //Arrange
@@ -179,6 +193,22 @@ namespace UnitTestProject1
             Assert.AreEqual("Son", newlist.LastElementRemoved);
         }
         [TestMethod]
+        public void RemoveStringTest()
+        {
+            //arrange
+
+            NewCustomList<string> newlist1 = new NewCustomList<string>() { "Dog", "Bird", "Lizard", "Frog", "Cat", }; ;
+            int expected = 4;
+
+            //act
+            newlist1.Remove("Lizard");
+            newlist1.Remove("dog");
+            int actual = newlist1.Count;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void Convert_DataTypes_ToString()
         {
             //Arrange
@@ -209,15 +239,15 @@ namespace UnitTestProject1
         public void Test_Overloading_PlusOperator()
         {
             //Arrange
-            NewCustomList<int> newlist = new NewCustomList<int>() { 1,2 };
-             
-            NewCustomList<int> secondList = new NewCustomList<int>() {3,4};
+            NewCustomList<int> newlist = new NewCustomList<int>() { 1, 2 };
+
+            NewCustomList<int> secondList = new NewCustomList<int>() { 3, 4 };
             NewCustomList<int> expectdResult = new NewCustomList<int>() { 1, 2, 3, 4 };
             //Act
             NewCustomList<int> actualresult = (newlist + secondList);
-            
+
             //Assert
-            Assert.AreEqual(expectdResult.ToString(),actualresult.ToString());
+            Assert.AreEqual(expectdResult.ToString(), actualresult.ToString());
         }
 
         [TestMethod]
@@ -226,12 +256,12 @@ namespace UnitTestProject1
             //Arrange
             NewCustomList<int> list = new NewCustomList<int>() { 1, 3, 5 };
             NewCustomList<int> secondList = new NewCustomList<int>() { 2, 1, 6, 7, 8 };
-            NewCustomList<int> expectedResult = new NewCustomList<int>() {3,5};
+            NewCustomList<int> expectedResult = new NewCustomList<int>() { 3, 5 };
 
             //Act
             NewCustomList<int> actualresult = (list - secondList);
             //Assert
-            Assert.AreEqual(expectedResult.ToString(),actualresult.ToString());
+            Assert.AreEqual(expectedResult.ToString(), actualresult.ToString());
 
 
         }
@@ -241,20 +271,44 @@ namespace UnitTestProject1
             //Arrange
             NewCustomList<int> oddlist = new NewCustomList<int>() { 1, 3, 5 };
             NewCustomList<int> evenlist = new NewCustomList<int>() { 2, 4, 6 };
-            
+
             //Act
             NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6 };                // Act
             NewCustomList<int> actual = NewCustomList<int>.Zip(oddlist, evenlist);
-          
+
             //Assert
             Assert.AreEqual(expectedresult.ToString(), actual.ToString());
         }
         [TestMethod]
-        public void TestSort_ListOfUnsortedValues_OutputInSortedOrder()
+        public void Iteration_ListWitItems_ForLoopResultsMatchForEachLoop()
         {
             // Arrange
-            
-           
+            int itemsToAdd = 40;
+            NewCustomList<int> j = new NewCustomList<int>();
+            for (int i = 0; i < itemsToAdd; i++)
+            {
+                j.Add(i);
+            }
+
+            // Act
+            string actual = "";
+            foreach (int number in j)
+            {
+                actual += number.ToString() + ", ";
+            }
+
+            // Assert
+            string expected = "";
+            for (int i = 0; i < j.Count; i++)
+            {
+                expected += j[i].ToString() + ", ";
+            }
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void TestSort_ListOfUnsortedList_OutputInSortedOrder()
+        {
+            // Arrange
             NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6, 7 };
             NewCustomList<int> j = new NewCustomList<int>() { 5, 3, 7, 2, 6, 4, 1 };
 
@@ -264,6 +318,7 @@ namespace UnitTestProject1
             // Assert
             Assert.AreEqual(expectedresult.ToString(), actualresult.ToString()); ;
         }
+
     }
 }
 
