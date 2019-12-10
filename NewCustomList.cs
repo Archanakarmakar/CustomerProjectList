@@ -120,6 +120,12 @@ namespace CustomList
             return NewString;
 
         }
+        ///overloading + operator
+        //overloading - operator
+        //method zip
+        //txt documantation for - operator
+        //iterable
+        //
         public static NewCustomList<T> operator +(NewCustomList<T> list1, NewCustomList<T> list2)
         {
             NewCustomList<T> newlist = new NewCustomList<T>();
@@ -161,6 +167,31 @@ namespace CustomList
             return newlist;
         }
 
+        public static NewCustomList<T> Sort<T>(NewCustomList<T> list) where T : IComparable
+        {
+            bool didSwap = false;
+            for (int i = 0; i < list.Count - 2; i++)
+            {
+                for (int j = list.count - 1; j >= 1; j--)
+                {
+                    if (list[j].CompareTo(list[j - 1]) < 0)
+                    {
+                        didSwap = true;
+                        T temp = list[j];
+                        list[j] = list[j - 1];
+                        list[j - 1] = temp;
+                    }
+                }
+            }
+            if (didSwap)
+            {
+                return NewCustomList<T>.Sort(list);
+            }
+            else
+            {
+                return list;
+            }
+        }
     }
 }
 
@@ -172,27 +203,5 @@ namespace CustomList
 //iterable
 //
 
-/*   public void Sort()
-   {
-       //int temp;
-       //int n = count;
-
-
-       for (int i = 0; i < count; i++)
-       {
-           for (int j = 0; j < count; j++)
-           {
-               int first = Convert.ToInt32(data[j]);
-               int second = Convert.ToInt32(data[j + 1]);
-               if (first.CompareTo(second) > 0)
-               {
-                   T firstElement = data[j];
-                   T secondElement = data[j + 1];
-                   data[j] = secondElement;
-                   data[j + 1] = firstElement;
-               }
-           }
-       }
-   }*/
 
 

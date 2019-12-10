@@ -249,35 +249,25 @@ namespace UnitTestProject1
             //Assert
             Assert.AreEqual(expectedresult.ToString(), actual.ToString());
         }
+        [TestMethod]
+        public void TestSort_ListOfUnsortedValues_OutputInSortedOrder()
+        {
+            // Arrange
+            
+           
+            NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6, 7 };
+            NewCustomList<int> j = new NewCustomList<int>() { 5, 3, 7, 2, 6, 4, 1 };
+
+            // Act
+            NewCustomList<int> actualresult = NewCustomList<int>.Sort<int>(j);
+
+            // Assert
+            Assert.AreEqual(expectedresult.ToString(), actualresult.ToString()); ;
+        }
     }
 }
 
-/* [TestMethod]
- public void Sort_StringList_OrderedList()
- {
-     //Arrange
-     NewCustomList<string> newlist = new NewCustomList<string>();
-     newlist.Add("foo");
-     newlist.Add("bar");
-     newlist.Add("hello");
-     //Act
-     newlist.Sort();
-     //Assert
-     Assert.AreEqual("bar", newlist[0]);
- }*/
-/* [TestMethod]
- public void Sort_IntList_ListCount3()
- {
-     //Arrange
-     NewCustomList<string> newlist = new NewCustomList<string>();
-     newlist.Add(12);
-     newlist.Add(23);
-     newlist.Add(11);
-     //Act
-     newlist.Sort();
-     //Assert
-     Assert.AreEqual(3, newlist.Count);
- }*/
+
 
 
 
