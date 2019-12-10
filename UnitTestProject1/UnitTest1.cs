@@ -197,12 +197,14 @@ namespace UnitTestProject1
         {
             //arrange
 
-            NewCustomList<string> newlist1 = new NewCustomList<string>() { "Dog", "Bird", "Lizard", "Frog", "Cat", }; ;
-            int expected = 4;
+            NewCustomList<string> newlist1 = new NewCustomList<string>() { "Dog", "Bird", "Lizard", "Frog", "Cat" };
+            int expected = 2;
 
             //act
             newlist1.Remove("Lizard");
-            newlist1.Remove("dog");
+            newlist1.Remove("Dog");
+            newlist1.Remove("Frog");
+           
             int actual = newlist1.Count;
             //assert
             Assert.AreEqual(expected, actual);
@@ -273,7 +275,7 @@ namespace UnitTestProject1
             NewCustomList<int> evenlist = new NewCustomList<int>() { 2, 4, 6 };
 
             //Act
-            NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6 };                // Act
+            NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6 };                
             NewCustomList<int> actual = NewCustomList<int>.Zip(oddlist, evenlist);
 
             //Assert
@@ -289,20 +291,18 @@ namespace UnitTestProject1
             {
                 j.Add(i);
             }
-
             // Act
             string actual = "";
             foreach (int number in j)
             {
                 actual += number.ToString() + ", ";
             }
-
-            // Assert
             string expected = "";
             for (int i = 0; i < j.Count; i++)
             {
                 expected += j[i].ToString() + ", ";
             }
+            // Assert
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
@@ -310,10 +310,10 @@ namespace UnitTestProject1
         {
             // Arrange
             NewCustomList<int> expectedresult = new NewCustomList<int>() { 1, 2, 3, 4, 5, 6, 7 };
-            NewCustomList<int> j = new NewCustomList<int>() { 5, 3, 7, 2, 6, 4, 1 };
+            NewCustomList<int> s = new NewCustomList<int>() { 5, 3, 7, 2, 6, 4, 1 };
 
             // Act
-            NewCustomList<int> actualresult = NewCustomList<int>.Sort<int>(j);
+            NewCustomList<int> actualresult = NewCustomList<int>.Sort<int>();
 
             // Assert
             Assert.AreEqual(expectedresult.ToString(), actualresult.ToString()); ;
