@@ -1,0 +1,31 @@
+ 
+Details and functionality of - operator overload:....
+
+   Syntex:access specifier  className  operator Operator_symbol (parameters)
+           {
+           // Code
+           } 
+    Access specifier:public
+    className:NewCustomList<T> 
+    operator: operator keyword 
+    Operator_symbol: unary - operator
+    parameters:list1,list2
+ example:
+  This is my  unary - operator  overloading method:
+
+  public static NewCustomList<T> operator -(NewCustomList<T> list1, NewCustomList<T> list2)
+        {
+            NewCustomList<T> newlist = new NewCustomList<T>();  
+
+
+          
+
+           
+         return newlist;   //but the return type must be the type of ‘Type’ for – .
+         }
+
+......................................................................................................
+
+An EASTER EGG user story,i think Add() method is the best practice  method.
+
+ 

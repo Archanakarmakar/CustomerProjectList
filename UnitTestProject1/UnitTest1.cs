@@ -281,30 +281,7 @@ namespace UnitTestProject1
             //Assert
             Assert.AreEqual(expectedresult.ToString(), actual.ToString());
         }
-        [TestMethod]
-        public void Iteration_ListWitItems_ForLoopResultsMatchForEachLoop()
-        {
-            // Arrange
-            int itemsToAdd = 40;
-            NewCustomList<int> j = new NewCustomList<int>();
-            for (int i = 0; i < itemsToAdd; i++)
-            {
-                j.Add(i);
-            }
-            // Act
-            string actual = "";
-            foreach (int number in j)
-            {
-                actual += number.ToString() + ", ";
-            }
-            string expected = "";
-            for (int i = 0; i < j.Count; i++)
-            {
-                expected += j[i].ToString() + ", ";
-            }
-            // Assert
-            Assert.AreEqual(expected, actual);
-        }
+       
         [TestMethod]
         public void TestSort_ListOfUnsortedList_OutputInSortedOrder()
         {
@@ -313,7 +290,7 @@ namespace UnitTestProject1
             NewCustomList<int> s = new NewCustomList<int>() { 5, 3, 7, 2, 6, 4, 1 };
 
             // Act
-            NewCustomList<int> actualresult = NewCustomList<int>.Sort<int>();
+            NewCustomList<int> actualresult = NewCustomList<int>.Sort<int>(s);
 
             // Assert
             Assert.AreEqual(expectedresult.ToString(), actualresult.ToString()); ;

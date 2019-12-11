@@ -1,0 +1,5 @@
+C# console application that works on the basics of the language as well as SOLID design principles.
+ SOLID Principles: I. Single Responsiblity Principle - Add()method and Remove() method,
+ Both of these methods are doing well at different conditions.
+The Interface Segregation Principle (ISP) states:IEnumerable and IComparable interfaces
+inherits off of the NewCustomList<T> class.It would still work.
